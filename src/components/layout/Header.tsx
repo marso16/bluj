@@ -1,7 +1,7 @@
 'use client'
 
 import Link from 'next/link'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 const NAV = [
   { label: 'Home', href: '/' },
@@ -12,46 +12,89 @@ const NAV = [
 ]
 
 export default function Header() {
-  const [open, setOpen] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
+  const [menuOpen, setMenuOpen] = useState(false)
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 60)
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-ink/90 backdrop-blur-sm border-b border-surface">
-      <div className="max-w-7xl mx-auto px-6 flex items-center justify-between h-16">
-        <Link href="/" className="font-display text-2xl font-black text-clean tracking-tight">
-          BluJ
-        </Link>
+    <>
+      <header className="fixed top-0 left-0 right-0 z-50">
+        {/* Canopy edge — amber line */}
+        <div className="h-0.5 bg-glow" />
 
-        <nav className="hidden md:flex items-center gap-8">
-          {NAV.map(item => (
-            <Link key={item.href} href={item.href}
-              className="text-ghost hover:text-clean text-sm font-medium transition-colors duration-200">
-              {item.label}
+        {/* Brand strip — desktop only, collapses on scroll like driving past the sign */}
+        <div
+          className={`hidden md:block bg-ink/95 backdrop-blur-sm overflow-hidden transition-all duration-500 ease-in-out ${
+            scrolled ? 'max-h-0' : 'max-h-24'
+          }`}
+        >
+          <div className="flex items-center justify-center py-4">
+            <Link
+              href="/"
+              className="font-display text-5xl tracking-[0.15em] text-clean uppercase select-none hover:text-charge transition-colors duration-300"
+            >
+              BluJ
             </Link>
-          ))}
-          <Link href="/locations"
-            className="bg-charge text-clean text-sm font-semibold px-4 py-2 rounded-md hover:bg-charge/80 transition-colors duration-200">
-            Find a Location
-          </Link>
-        </nav>
-
-        <button className="md:hidden text-ghost hover:text-clean" onClick={() => setOpen(o => !o)} aria-label="Toggle menu">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-            {open ? <path d="M18 6L6 18M6 6l12 12" /> : <path d="M3 12h18M3 6h18M3 18h18" />}
-          </svg>
-        </button>
-      </div>
-
-      {open && (
-        <div className="md:hidden bg-surface border-t border-ink px-6 py-4 flex flex-col gap-4">
-          {NAV.map(item => (
-            <Link key={item.href} href={item.href}
-              className="text-ghost hover:text-clean text-sm font-medium transition-colors"
-              onClick={() => setOpen(false)}>
-              {item.label}
-            </Link>
-          ))}
+          </div>
         </div>
-      )}
-    </header>
+
+        {/* Nav strip — always visible on desktop */}
+        <div className="hidden md:block bg-surface/90 backdrop-blur-sm border-b border-white/5">
+          <div className="h-10 flex items-center justify-center gap-10">
+            {NAV.map(item => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className="text-ghost hover:text-clean text-[11px] uppercase tracking-[0.2em] font-medium transition-colors duration-200"
+              >
+                {item.label}
+              </Link>
+            ))}
+          </div>
+        </div>
+
+        {/* Mobile — single row */}
+        <div className="md:hidden bg-ink/95 backdrop-blur-sm border-b border-white/5">
+          <div className="h-14 flex items-center justify-between px-6">
+            <Link href="/" className="font-display text-2xl tracking-[0.15em] text-clean uppercase">
+              BluJ
+            </Link>
+            <button
+              onClick={() => setMenuOpen(o => !o)}
+              className="text-ghost hover:text-glow text-[11px] uppercase tracking-[0.2em] transition-colors duration-200"
+              aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+            >
+              {menuOpen ? 'Close' : 'Menu'}
+            </button>
+          </div>
+        </div>
+      </header>
+
+      {/* Mobile fullscreen overlay — nav as price board */}
+      <div
+        className={`fixed inset-0 z-40 bg-ink flex flex-col justify-end pb-16 px-8 md:hidden transition-opacity duration-300 ${
+          menuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
+        }`}
+      >
+        <nav className="flex flex-col gap-1">
+          {NAV.map(item => (
+            <Link
+              key={item.href}
+              href={item.href}
+              className="font-display text-6xl text-ghost hover:text-clean uppercase tracking-[0.05em] transition-colors duration-150 leading-tight"
+              onClick={() => setMenuOpen(false)}
+            >
+              {item.label}
+            </Link>
+          ))}
+        </nav>
+        <div className="mt-8 h-0.5 w-12 bg-glow" />
+      </div>
+    </>
   )
 }
