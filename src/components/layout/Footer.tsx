@@ -54,7 +54,7 @@ export default function Footer() {
       {/* Canopy edge — mirrors the header's amber top line */}
       <div className="h-0.5 bg-glow mt-12" />
 
-      <div className="bg-ink px-8 md:px-16 py-5 flex items-center justify-between">
+      <div className="bg-ink px-8 md:px-16 py-5 flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:justify-between">
         <p className="text-ghost text-[11px] uppercase tracking-[0.15em]">
           © {new Date().getFullYear()} BluJ. All rights reserved.
         </p>

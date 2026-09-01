@@ -86,7 +86,8 @@ export default function Header() {
             <Link
               key={item.href}
               href={item.href}
-              className="font-display text-6xl text-ghost hover:text-clean uppercase tracking-[0.05em] transition-colors duration-150 leading-tight"
+              className="font-display text-ghost hover:text-clean uppercase tracking-[0.05em] transition-colors duration-150 leading-tight"
+              style={{ fontSize: 'clamp(2rem, 10vw, 3.75rem)' }}
               onClick={() => setMenuOpen(false)}
             >
               {item.label}

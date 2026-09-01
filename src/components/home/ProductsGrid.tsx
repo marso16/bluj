@@ -21,7 +21,7 @@ export default function ProductsGrid({ products }: { products: Product[] }) {
           </Link>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3">
           {featured.map((p, i) => (
             <div key={p._id}
               className={`bg-surface overflow-hidden border border-ink/50 ${i === 0 ? 'md:col-span-2 md:row-span-2' : ''}`}>
