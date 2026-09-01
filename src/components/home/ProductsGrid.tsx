@@ -24,7 +24,7 @@ export default function ProductsGrid({ products }: { products: Product[] }) {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
           {featured.map((p, i) => (
             <div key={p._id}
-              className={`bg-surface rounded-lg overflow-hidden border border-ink/50 ${i === 0 ? 'md:col-span-2 md:row-span-2' : ''}`}>
+              className={`bg-surface overflow-hidden border border-ink/50 ${i === 0 ? 'md:col-span-2 md:row-span-2' : ''}`}>
               {p.image && (
                 <div className={`bg-ink/50 ${i === 0 ? 'h-56 md:h-72' : 'h-32'}`}>
                   <img src={urlFor(p.image).width(600).url()} alt={p.name} className="w-full h-full object-cover" />

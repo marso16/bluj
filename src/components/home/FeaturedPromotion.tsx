@@ -8,7 +8,7 @@ export default function FeaturedPromotion({ promotion }: { promotion: Promotion 
     <section className="py-2 px-6">
       <div className="max-w-7xl mx-auto">
         <div
-          className="relative rounded-lg overflow-hidden min-h-64 flex items-end p-10"
+          className="relative overflow-hidden min-h-64 flex items-end p-10"
           style={{
             backgroundImage: promotion.image ? `url(${urlFor(promotion.image).width(1400).url()})` : undefined,
             backgroundColor: 'var(--color-surface)',
