@@ -12,7 +12,7 @@ export default function LocationsStrip({ locations }: { locations: Location[] })
             <h2 className="font-display font-black text-clean text-5xl md:text-6xl">Locations</h2>
           </div>
           <Link href="/locations" className="text-charge text-sm font-medium hover:text-charge/70 transition-colors hidden md:block">
-            View all →
+            All locations + maps →
           </Link>
         </div>
 
@@ -35,6 +35,14 @@ export default function LocationsStrip({ locations }: { locations: Location[] })
                   ))}
                 </div>
               )}
+              <a
+                href={`https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(loc.address)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-glow text-xs uppercase tracking-[0.15em] mt-5 block hover:text-glow/70 transition-colors"
+              >
+                Get directions →
+              </a>
             </div>
           ))}
         </div>
