@@ -1,0 +1,16 @@
+/* BluJ Design Tokens — swap this file when brand assets arrive */
+@theme {
+  --color-ink:     #0A0E1A;
+  --color-surface: #161D35;
+  --color-charge:  #1D6FFF;
+  --color-glow:    #F59E0B;
+  --color-clean:   #F0F4FF;
+  --color-ghost:   #8892A4;
+
+  --font-display: 'Big Shoulders Display', sans-serif;
+  --font-body:    'DM Sans', sans-serif;
+
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 16px;
+}
