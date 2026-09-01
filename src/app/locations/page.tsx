@@ -59,6 +59,19 @@ export default async function LocationsPage() {
                 </div>
               </div>
             )}
+
+            <div className="mt-6 border-t border-ink/50">
+              <iframe
+                src={`https://maps.google.com/maps?q=${encodeURIComponent(loc.address)}&output=embed&z=15`}
+                width="100%"
+                height="200"
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                className="w-full block"
+                style={{ filter: 'invert(90%) hue-rotate(180deg) saturate(0.6) brightness(0.85)' }}
+                title={`Map for ${loc.name}`}
+              />
+            </div>
           </div>
         ))}
       </div>
