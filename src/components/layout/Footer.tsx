@@ -10,37 +10,57 @@ const NAV = [
 
 export default function Footer() {
   return (
-    <footer className="bg-surface border-t border-ink/50 mt-32">
-      <div className="max-w-7xl mx-auto px-6 py-16 grid grid-cols-1 md:grid-cols-3 gap-12">
-        <div>
-          <span className="font-display text-3xl font-black text-clean">BluJ</span>
-          <p className="text-ghost text-sm mt-3 leading-relaxed">
-            Your local gas station, convenience store, and deli across New Hampshire and Vermont.
-          </p>
-        </div>
+    <footer className="mt-32">
+      {/* Transaction complete */}
+      <div className="h-px bg-white/10" />
 
-        <div>
-          <p className="text-ghost text-xs uppercase tracking-widest mb-4">Navigation</p>
-          <nav className="flex flex-col gap-2">
+      <div className="bg-ink px-8 md:px-16 pt-12">
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-10">
+
+          {/* Brand anchor — large, bottom-aligned left */}
+          <div>
+            <Link
+              href="/"
+              className="font-display text-7xl md:text-9xl text-clean uppercase tracking-[0.08em] hover:text-charge transition-colors duration-300 leading-none block"
+            >
+              BluJ
+            </Link>
+            <p className="text-ghost text-[11px] uppercase tracking-[0.25em] mt-3">
+              New Hampshire &amp; Vermont
+            </p>
+          </div>
+
+          {/* Nav — bottom-aligned right */}
+          <nav className="flex flex-col md:items-end gap-2 md:pb-2">
             {NAV.map(item => (
-              <Link key={item.href} href={item.href} className="text-ghost hover:text-clean text-sm transition-colors">
+              <Link
+                key={item.href}
+                href={item.href}
+                className="text-ghost hover:text-clean text-sm transition-colors duration-200"
+              >
                 {item.label}
               </Link>
             ))}
+            <Link
+              href="/contact"
+              className="text-charge hover:text-charge/70 text-sm mt-3 transition-colors duration-200"
+            >
+              Send us a message →
+            </Link>
           </nav>
-        </div>
-
-        <div>
-          <p className="text-ghost text-xs uppercase tracking-widest mb-4">Get In Touch</p>
-          <Link href="/contact" className="text-charge hover:text-charge/80 text-sm transition-colors">
-            Send us a message
-          </Link>
         </div>
       </div>
 
-      <div className="border-t border-ink/50 max-w-7xl mx-auto px-6 py-6 flex items-center justify-between">
-        <p className="text-ghost text-xs">© {new Date().getFullYear()} BluJ. All rights reserved.</p>
-        <p className="text-ghost text-xs">NH &amp; VT</p>
+      {/* Canopy edge — mirrors the header's amber top line */}
+      <div className="h-0.5 bg-glow mt-12" />
+
+      <div className="bg-ink px-8 md:px-16 py-5 flex items-center justify-between">
+        <p className="text-ghost text-[11px] uppercase tracking-[0.15em]">
+          © {new Date().getFullYear()} BluJ. All rights reserved.
+        </p>
+        <p className="text-ghost/50 text-[11px] uppercase tracking-[0.15em]">
+          NH &amp; VT
+        </p>
       </div>
     </footer>
   )
