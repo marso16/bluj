@@ -16,12 +16,12 @@ export default function LocationsStrip({ locations }: { locations: Location[] })
           </Link>
         </div>
 
-        <div className="flex gap-px overflow-x-auto pb-4 snap-x snap-mandatory bg-surface/30" style={{ scrollbarWidth: 'none' }}>
+        <div className="flex overflow-x-auto snap-x snap-mandatory" style={{ scrollbarWidth: 'none' }}>
           {locations.map(loc => (
             <Link
               key={loc._id}
               href="/locations"
-              className="snap-start flex-shrink-0 w-64 bg-ink p-6 flex flex-col gap-3 border-l-2 border-transparent hover:border-glow hover:bg-surface transition-all duration-200 group"
+              className="snap-start flex-shrink-0 w-64 bg-ink p-6 flex flex-col gap-3 border-l-2 border-transparent border-r border-r-surface hover:border-l-glow hover:bg-surface transition-all duration-200 group"
             >
               <OpenIndicator hours={loc.hours ?? []} />
               <h3 className="font-display font-black text-clean text-2xl leading-none group-hover:text-glow transition-colors">
