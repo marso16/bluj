@@ -4,7 +4,7 @@ import { useState } from "react";
 
 export default function NewsletterSignup() {
   const [email, setEmail] = useState("");
-  const [state, setState] = useState<"idle" | "loading" | "done" | "error">("idle");
+  const [state, setState] = useState<"idle" | "loading" | "done" | "already" | "error">("idle");
 
   async function submit(e: React.FormEvent) {
     e.preventDefault();
@@ -14,13 +14,23 @@ export default function NewsletterSignup() {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email }),
     });
-    setState(res.ok ? "done" : "error");
+    if (!res.ok) { setState("error"); return; }
+    const data = await res.json();
+    setState(data.alreadySubscribed ? "already" : "done");
   }
 
   if (state === "done") {
     return (
       <p className="text-glow text-[11px] uppercase tracking-[0.2em]">
         You're in. Watch for deals.
+      </p>
+    );
+  }
+
+  if (state === "already") {
+    return (
+      <p className="text-ghost text-[11px] uppercase tracking-[0.2em]">
+        Already subscribed.
       </p>
     );
   }

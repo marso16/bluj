@@ -26,7 +26,7 @@ export async function POST(req: NextRequest) {
     `*[_type == "newsletterSubscriber" && email == $email][0]._id`,
     { email: parsed.data.email }
   );
-  if (existing) return NextResponse.json({ ok: true });
+  if (existing) return NextResponse.json({ alreadySubscribed: true });
 
   await writeClient.create({
     _type: "newsletterSubscriber",
