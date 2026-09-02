@@ -25,6 +25,14 @@ export async function getActivePromotion(): Promise<Promotion | null> {
   return promo ?? null;
 }
 
+export async function getPromotions(): Promise<Promotion[]> {
+  return sanityClient.fetch(`
+    *[_type == "promotion" && active == true] | order(_createdAt desc) {
+      _id, title, description, image, active, activeDateRange
+    }
+  `);
+}
+
 export async function getProducts(): Promise<Product[]> {
   return sanityClient.fetch(`
     *[_type == "product"] | order(category asc, name asc) {
