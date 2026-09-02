@@ -1,5 +1,6 @@
 import { getPost, getPosts } from "@/lib/sanity/queries";
 import { urlFor } from "@/lib/sanity/client";
+import { SITE_URL } from "@/lib/site";
 import Breadcrumb from "@/components/layout/Breadcrumb";
 import ShareButton from "@/components/news/ShareButton";
 import { notFound } from "next/navigation";
@@ -39,8 +40,8 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
     "headline": post.title,
     ...(post.publishedAt ? { "datePublished": post.publishedAt } : {}),
     ...(post.excerpt ? { "description": post.excerpt } : {}),
-    "publisher": { "@type": "Organization", "name": "BluJ", "url": "https://bluj.com" },
-    "url": `https://bluj.com/news/${post.slug.current}`,
+    "publisher": { "@type": "Organization", "name": "BluJ", "url": SITE_URL },
+    "url": `${SITE_URL}/news/${post.slug.current}`,
   };
 
   return (
@@ -72,7 +73,7 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
       <div className="h-px bg-glow/20 mb-10" />
 
       <div className="flex justify-end mb-8">
-        <ShareButton title={post.title} url={`https://bluj.com/news/${post.slug.current}`} />
+        <ShareButton title={post.title} url={`${SITE_URL}/news/${post.slug.current}`} />
       </div>
 
       {post.excerpt && (

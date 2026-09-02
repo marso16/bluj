@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { createClient } from "next-sanity";
 import { Resend } from "resend";
 import { z } from "zod";
+import { SITE_URL } from "@/lib/site";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
@@ -100,7 +101,7 @@ function welcomeEmail(): string {
               <table cellpadding="0" cellspacing="0" border="0">
                 <tr>
                   <td style="background-color:rgba(29,111,255,0.12);border:1px solid #1D6FFF;">
-                    <a href="https://bluj.com/news" style="display:inline-block;padding:14px 28px;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:#1D6FFF;text-decoration:none;font-family:Helvetica,Arial,sans-serif;">
+                    <a href="${SITE_URL}/news" style="display:inline-block;padding:14px 28px;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:#1D6FFF;text-decoration:none;font-family:Helvetica,Arial,sans-serif;">
                       Read Latest News →
                     </a>
                   </td>

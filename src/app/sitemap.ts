@@ -1,7 +1,8 @@
 import { getLocations, getPosts } from "@/lib/sanity/queries";
+import { SITE_URL } from "@/lib/site";
 import type { MetadataRoute } from "next";
 
-const BASE = "https://bluj.com";
+const BASE = SITE_URL;
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const [locations, posts] = await Promise.all([getLocations(), getPosts()]);

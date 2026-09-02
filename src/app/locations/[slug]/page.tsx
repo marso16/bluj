@@ -1,4 +1,5 @@
 import { getLocation, getLocations } from "@/lib/sanity/queries";
+import { SITE_URL } from "@/lib/site";
 import OpenIndicator from "@/components/home/OpenIndicator";
 import Breadcrumb from "@/components/layout/Breadcrumb";
 import CopyAddress from "@/components/locations/CopyAddress";
@@ -41,7 +42,7 @@ export default async function LocationPage({ params }: { params: Promise<{ slug:
     "openingHoursSpecification": (loc.hours ?? [])
       .filter(h => !h.closed)
       .map(h => ({ "@type": "OpeningHoursSpecification", "dayOfWeek": `https://schema.org/${h.day}`, "opens": h.open, "closes": h.close })),
-    "url": `https://bluj.com/locations/${loc.slug.current}`,
+    "url": `${SITE_URL}/locations/${loc.slug.current}`,
   };
 
   return (
