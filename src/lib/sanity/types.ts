@@ -42,6 +42,16 @@ export interface Product {
   featured: boolean;
 }
 
+export interface Post {
+  _id: string;
+  title: string;
+  slug: { current: string };
+  publishedAt?: string;
+  excerpt?: string;
+  body?: string;
+  image?: { asset: { _ref: string } };
+}
+
 export interface JobPosting {
   _id: string;
   title: string;

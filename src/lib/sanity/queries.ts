@@ -1,5 +1,5 @@
 import { sanityClient } from "./client";
-import type { Location, Promotion, Product, JobPosting, SiteSettings } from "./types";
+import type { Location, Promotion, Product, JobPosting, Post, SiteSettings } from "./types";
 
 export async function getLocations(): Promise<Location[]> {
   return sanityClient.fetch(`
@@ -31,6 +31,24 @@ export async function getProducts(): Promise<Product[]> {
       _id, name, category, description, image, featured
     }
   `);
+}
+
+export async function getPosts(): Promise<Post[]> {
+  return sanityClient.fetch(`
+    *[_type == "post"] | order(publishedAt desc) {
+      _id, title, slug, publishedAt, excerpt, image
+    }
+  `);
+}
+
+export async function getPost(slug: string): Promise<Post | null> {
+  const post: Post | null = await sanityClient.fetch(
+    `*[_type == "post" && slug.current == $slug][0] {
+      _id, title, slug, publishedAt, excerpt, body, image
+    }`,
+    { slug }
+  );
+  return post ?? null;
 }
 
 export async function getJobPostings(): Promise<JobPosting[]> {
