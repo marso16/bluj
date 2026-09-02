@@ -42,7 +42,7 @@ export default async function LocationsPage() {
             key={loc._id}
             className="bg-surface p-8 border border-ink/50 hover:border-charge/20 transition-colors duration-300"
           >
-            <div className="flex items-start justify-between gap-4">
+            <div className="flex items-start justify-between gap-4 min-h-32">
               <div>
                 <h2 className="text-clean font-display font-black text-3xl leading-none">
                   {loc.name}
