@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import './globals.css'
 import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
+import BackToTop from '@/components/layout/BackToTop'
 
 export const metadata: Metadata = {
   title: { default: 'BluJ', template: '%s | BluJ' },
@@ -21,6 +22,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Header />
         <main className="pt-16 md:pt-32">{children}</main>
         <Footer />
+        <BackToTop />
       </body>
     </html>
   )
