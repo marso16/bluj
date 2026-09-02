@@ -1,14 +1,14 @@
 /* BluJ Design Tokens — swap this file when brand assets arrive */
 @theme {
-  --color-ink:     #0A0E1A;
-  --color-surface: #161D35;
-  --color-charge:  #1D6FFF;
-  --color-glow:    #F59E0B;
-  --color-clean:   #F0F4FF;
-  --color-ghost:   #8892A4;
+  --color-ink: #0a0e1a;
+  --color-surface: #161d35;
+  --color-charge: #1d6fff;
+  --color-glow: #f59e0b;
+  --color-clean: #f0f4ff;
+  --color-ghost: #8892a4;
 
-  --font-display: 'Big Shoulders Display', sans-serif;
-  --font-body:    'DM Sans', sans-serif;
+  --font-display: "Big Shoulders Display", sans-serif;
+  --font-body: "DM Sans", sans-serif;
 
   --radius-sm: 4px;
   --radius-md: 8px;

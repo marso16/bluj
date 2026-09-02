@@ -1,25 +1,25 @@
-'use client'
+"use client";
 
-import Link from 'next/link'
-import { useState, useEffect } from 'react'
+import Link from "next/link";
+import { useState, useEffect } from "react";
 
 const NAV = [
-  { label: 'Home', href: '/' },
-  { label: 'Products', href: '/products' },
-  { label: 'Locations', href: '/locations' },
-  { label: 'Employment', href: '/employment' },
-  { label: 'Contact', href: '/contact' },
-]
+  { label: "Home", href: "/" },
+  { label: "Products", href: "/products" },
+  { label: "Locations", href: "/locations" },
+  { label: "Employment", href: "/employment" },
+  { label: "Contact", href: "/contact" },
+];
 
 export default function Header() {
-  const [scrolled, setScrolled] = useState(false)
-  const [menuOpen, setMenuOpen] = useState(false)
+  const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 60)
-    window.addEventListener('scroll', onScroll, { passive: true })
-    return () => window.removeEventListener('scroll', onScroll)
-  }, [])
+    const onScroll = () => setScrolled(window.scrollY > 60);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
     <>
@@ -30,7 +30,7 @@ export default function Header() {
         {/* Brand strip — desktop only, collapses on scroll like driving past the sign */}
         <div
           className={`hidden md:block bg-ink/95 backdrop-blur-sm overflow-hidden transition-all duration-500 ease-in-out ${
-            scrolled ? 'max-h-0' : 'max-h-24'
+            scrolled ? "max-h-0" : "max-h-24"
           }`}
         >
           <div className="flex items-center justify-center py-4">
@@ -46,7 +46,7 @@ export default function Header() {
         {/* Nav strip — always visible on desktop */}
         <div className="hidden md:block bg-surface/90 backdrop-blur-sm border-b border-white/5">
           <div className="h-10 flex items-center justify-center gap-10">
-            {NAV.map(item => (
+            {NAV.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
@@ -61,15 +61,18 @@ export default function Header() {
         {/* Mobile — single row */}
         <div className="md:hidden bg-ink/95 backdrop-blur-sm border-b border-white/5">
           <div className="h-14 flex items-center justify-between px-6">
-            <Link href="/" className="font-display text-2xl tracking-[0.15em] text-clean uppercase">
+            <Link
+              href="/"
+              className="font-display text-2xl tracking-[0.15em] text-clean uppercase"
+            >
               BluJ
             </Link>
             <button
-              onClick={() => setMenuOpen(o => !o)}
+              onClick={() => setMenuOpen((o) => !o)}
               className="text-ghost hover:text-glow text-[11px] uppercase tracking-[0.2em] transition-colors duration-200"
-              aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+              aria-label={menuOpen ? "Close menu" : "Open menu"}
             >
-              {menuOpen ? 'Close' : 'Menu'}
+              {menuOpen ? "Close" : "Menu"}
             </button>
           </div>
         </div>
@@ -78,16 +81,18 @@ export default function Header() {
       {/* Mobile fullscreen overlay — nav as price board */}
       <div
         className={`fixed inset-0 z-40 bg-ink flex flex-col justify-end pb-16 px-8 md:hidden transition-opacity duration-300 ${
-          menuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
+          menuOpen
+            ? "opacity-100 pointer-events-auto"
+            : "opacity-0 pointer-events-none"
         }`}
       >
         <nav className="flex flex-col gap-1">
-          {NAV.map(item => (
+          {NAV.map((item) => (
             <Link
               key={item.href}
               href={item.href}
               className="font-display text-ghost hover:text-clean uppercase tracking-[0.05em] transition-colors duration-150 leading-tight"
-              style={{ fontSize: 'clamp(2rem, 10vw, 3.75rem)' }}
+              style={{ fontSize: "clamp(2rem, 10vw, 3.75rem)" }}
               onClick={() => setMenuOpen(false)}
             >
               {item.label}
@@ -97,5 +102,5 @@ export default function Header() {
         <div className="mt-8 h-0.5 w-12 bg-glow" />
       </div>
     </>
-  )
+  );
 }

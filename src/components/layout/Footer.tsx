@@ -1,12 +1,12 @@
-import Link from 'next/link'
+import Link from "next/link";
 
 const NAV = [
-  { label: 'Home', href: '/' },
-  { label: 'Products', href: '/products' },
-  { label: 'Locations', href: '/locations' },
-  { label: 'Employment', href: '/employment' },
-  { label: 'Contact', href: '/contact' },
-]
+  { label: "Home", href: "/" },
+  { label: "Products", href: "/products" },
+  { label: "Locations", href: "/locations" },
+  { label: "Employment", href: "/employment" },
+  { label: "Contact", href: "/contact" },
+];
 
 export default function Footer() {
   return (
@@ -16,7 +16,6 @@ export default function Footer() {
 
       <div className="bg-ink px-8 md:px-16 pt-12">
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-10">
-
           {/* Brand anchor — large, bottom-aligned left */}
           <div>
             <Link
@@ -32,7 +31,7 @@ export default function Footer() {
 
           {/* Nav — bottom-aligned right */}
           <nav className="flex flex-col md:items-end gap-2 md:pb-2">
-            {NAV.map(item => (
+            {NAV.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
@@ -63,5 +62,5 @@ export default function Footer() {
         </p>
       </div>
     </footer>
-  )
+  );
 }

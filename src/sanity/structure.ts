@@ -1,11 +1,13 @@
-import type { StructureBuilder } from 'sanity/structure'
+import type { StructureBuilder } from "sanity/structure";
 
 export const structure = (S: StructureBuilder) =>
-  S.list().title('BluJ CMS').items([
-    S.documentTypeListItem('location').title('Locations'),
-    S.documentTypeListItem('promotion').title('Promotions'),
-    S.documentTypeListItem('product').title('Products'),
-    S.documentTypeListItem('jobApplication').title('Job Applications'),
-    S.divider(),
-    S.documentTypeListItem('siteSettings').title('Site Settings'),
-  ])
+  S.list()
+    .title("BluJ CMS")
+    .items([
+      S.documentTypeListItem("location").title("Locations"),
+      S.documentTypeListItem("promotion").title("Promotions"),
+      S.documentTypeListItem("product").title("Products"),
+      S.documentTypeListItem("jobApplication").title("Job Applications"),
+      S.divider(),
+      S.documentTypeListItem("siteSettings").title("Site Settings"),
+    ]);
