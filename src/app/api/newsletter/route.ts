@@ -1,6 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createClient } from "next-sanity";
+import { Resend } from "resend";
 import { z } from "zod";
+
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 const schema = z.object({ email: z.string().email() });
 
@@ -29,6 +32,13 @@ export async function POST(req: NextRequest) {
     _type: "newsletterSubscriber",
     email: parsed.data.email,
     subscribedAt: new Date().toISOString(),
+  });
+
+  await resend.emails.send({
+    from: "BluJ <onboarding@resend.dev>",
+    to: [parsed.data.email],
+    subject: "You're on the list.",
+    text: `Hey,\n\nYou're signed up for BluJ deals and updates. We'll only reach out when there's something worth your time — fuel specials, new menu items, or news from the stations.\n\nSee you at the pump.\n\n— The BluJ Team\nbluj.com`,
   });
 
   return NextResponse.json({ ok: true });
