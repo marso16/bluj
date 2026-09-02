@@ -7,17 +7,17 @@ export default function LocationsStrip({ locations }: { locations: Location[] })
   return (
     <section className="py-20 border-t border-surface">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="flex items-end justify-between mb-10">
+        <div className="flex items-end justify-between mb-4">
           <div>
             <p className="text-ghost text-xs uppercase tracking-widest mb-2">Find Us</p>
             <h2 className="font-display font-black text-clean text-5xl md:text-6xl">Locations</h2>
           </div>
-          <div className="flex flex-col items-end gap-3">
-            <Link href="/locations" className="text-charge text-sm font-medium hover:text-charge/70 transition-colors hidden md:block">
-              All locations + maps →
-            </Link>
-            <NearestLocation locations={locations} />
-          </div>
+          <Link href="/locations" className="text-charge text-sm font-medium hover:text-charge/70 transition-colors hidden md:block">
+            All locations + maps →
+          </Link>
+        </div>
+        <div className="mb-8">
+          <NearestLocation locations={locations} />
         </div>
 
         <div className="flex overflow-x-auto snap-x snap-mandatory" style={{ scrollbarWidth: 'none' }}>

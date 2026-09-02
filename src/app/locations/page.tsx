@@ -42,12 +42,6 @@ export default async function LocationsPage() {
             key={loc._id}
             className="bg-surface p-8 border border-ink/50 hover:border-charge/20 transition-colors duration-300"
           >
-            <Link
-              href={`/locations/${loc.slug.current}`}
-              className="text-charge text-[10px] uppercase tracking-[0.2em] hover:text-charge/70 transition-colors float-right"
-            >
-              Full Details →
-            </Link>
             <div className="flex items-start justify-between gap-4">
               <div>
                 <h2 className="text-clean font-display font-black text-3xl leading-none">
@@ -117,7 +111,16 @@ export default async function LocationsPage() {
               </div>
             )}
 
-            <div className="mt-6 border-t border-ink/50">
+            <div className="mt-6 pt-5 border-t border-ink/50 flex justify-end">
+              <Link
+                href={`/locations/${loc.slug.current}`}
+                className="text-charge text-[10px] uppercase tracking-[0.2em] hover:text-charge/70 transition-colors"
+              >
+                Full Details →
+              </Link>
+            </div>
+
+            <div className="border-t border-ink/50">
               <iframe
                 src={`https://maps.google.com/maps?q=${encodeURIComponent(loc.address)}&output=embed&z=15`}
                 width="100%"
