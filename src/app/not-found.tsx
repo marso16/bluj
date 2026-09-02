@@ -1,7 +1,7 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 
-export const metadata: Metadata = { title: "404 — Wrong Turn" };
+export const metadata: Metadata = { title: "404: Wrong Turn" };
 
 export default function NotFound() {
   return (
@@ -12,7 +12,7 @@ export default function NotFound() {
         <span className="text-glow">Turn.</span>
       </h1>
       <p className="text-ghost max-w-sm mb-12 leading-relaxed">
-        This page doesn't exist — but the nearest BluJ is never far away.
+        This page doesn't exist, but the nearest BluJ is never far.
       </p>
       <div className="flex flex-wrap gap-4">
         <Link

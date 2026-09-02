@@ -38,7 +38,7 @@ export async function POST(req: NextRequest) {
     from: "BluJ <onboarding@resend.dev>",
     to: [parsed.data.email],
     subject: "You're on the list.",
-    text: `Hey,\n\nYou're signed up for BluJ deals and updates. We'll only reach out when there's something worth your time — fuel specials, new menu items, or news from the stations.\n\nSee you at the pump.\n\n— The BluJ Team`,
+    text: `Hey,\n\nYou're signed up for BluJ deals and updates. We'll only reach out when there's something worth your time: fuel specials, new menu items, or news from the stations.\n\nSee you at the pump.\n\nThe BluJ Team`,
     html: welcomeEmail(),
   });
 
@@ -83,7 +83,7 @@ function welcomeEmail(): string {
               <p style="margin:0 0 8px;font-size:11px;letter-spacing:0.25em;text-transform:uppercase;color:#8892A4;">You're in.</p>
               <h1 style="margin:0 0 24px;font-family:Impact,'Arial Narrow',Arial,sans-serif;font-size:48px;font-weight:900;color:#F0F4FF;letter-spacing:0.04em;line-height:1;text-transform:uppercase;">Watch for deals.</h1>
               <p style="margin:0 0 16px;font-size:16px;line-height:1.7;color:#8892A4;">
-                You're signed up for BluJ deals and updates. We'll only reach out when there's something worth your time — fuel specials, new deli items, or news from the stations.
+                You're signed up for BluJ deals and updates. We'll only reach out when there's something worth your time: fuel specials, new deli items, or news from the stations.
               </p>
               <p style="margin:0;font-size:16px;line-height:1.7;color:#8892A4;">
                 See you at the pump.

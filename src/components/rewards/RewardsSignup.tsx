@@ -29,7 +29,7 @@ export default function RewardsSignup() {
   if (state === "already") return (
     <div className="border-l-2 border-charge pl-5">
       <p className="font-display font-black text-clean text-2xl leading-none">Already signed up.</p>
-      <p className="text-ghost text-sm mt-2">You're on the list — we'll reach out at launch.</p>
+      <p className="text-ghost text-sm mt-2">You're on the list. We'll reach out at launch.</p>
     </div>
   );
 
@@ -50,7 +50,7 @@ export default function RewardsSignup() {
       >
         {state === "loading" ? "…" : "Join Waitlist"}
       </button>
-      {state === "error" && <p className="text-red-400 text-xs mt-2">Something went wrong — try again.</p>}
+      {state === "error" && <p className="text-red-400 text-xs mt-2">Something went wrong. Try again.</p>}
     </form>
   );
 }

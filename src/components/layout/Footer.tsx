@@ -40,7 +40,7 @@ export default function Footer() {
 
       <div className="bg-ink px-8 md:px-16 pt-12">
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-10">
-          {/* Brand anchor — large, bottom-aligned left */}
+          {/* Brand anchor */}
           <div>
             <Link
               href="/"
@@ -67,7 +67,7 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Nav — bottom-aligned right */}
+          {/* Nav */}
           <nav className="flex flex-col md:items-end gap-2 md:pb-2">
             {NAV.map((item) => (
               <Link
@@ -97,7 +97,7 @@ export default function Footer() {
         <NewsletterSignup />
       </div>
 
-      {/* Canopy edge — mirrors the header's amber top line */}
+      {/* Canopy edge */}
       <div className="h-0.5 bg-glow mt-12" />
 
       <div className="bg-ink px-8 md:px-16 py-5 flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:justify-between">

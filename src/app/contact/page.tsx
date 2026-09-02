@@ -3,7 +3,7 @@ import ContactForm from "@/components/contact/ContactForm";
 
 export const metadata: Metadata = {
   title: "Contact",
-  description: "Get in touch with BluJ. Questions, feedback, or anything else — we're listening.",
+  description: "Get in touch with BluJ. Questions, feedback, or anything else. We're listening.",
   openGraph: { title: "Contact BluJ", description: "Questions or feedback? Reach out to the BluJ team." },
 };
 
@@ -17,7 +17,7 @@ export default function ContactPage() {
         Contact
       </h1>
       <p className="text-ghost mb-12 leading-relaxed">
-        Questions, feedback, or anything else — we're listening.
+        Questions, feedback, or anything else. We're listening.
       </p>
       <ContactForm />
     </div>

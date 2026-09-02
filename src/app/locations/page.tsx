@@ -7,7 +7,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Locations",
   description: "Find your nearest BluJ gas station in New Hampshire and Vermont. View hours, fuel prices, and directions.",
-  openGraph: { title: "Locations | BluJ", description: "Find your nearest BluJ — hours, fuel prices, and maps." },
+  openGraph: { title: "Locations | BluJ", description: "Find your nearest BluJ. Hours, fuel prices, and maps." },
 };
 export const revalidate = 60;
 
@@ -114,7 +114,7 @@ export default async function LocationsPage() {
                                 ? "Closed"
                                 : entry
                                   ? `${entry.open} – ${entry.close}`
-                                  : "—"}
+                                  : "N/A"}
                             </span>
                           </div>
                         );
@@ -152,7 +152,7 @@ export default async function LocationsPage() {
 
       {locations.length === 0 && (
         <p className="text-ghost text-sm">
-          No locations found — add them in the Studio.
+          No locations found. Add them in the Studio.
         </p>
       )}
     </div>

@@ -19,7 +19,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   if (!loc) return { title: "Location Not Found" };
   return {
     title: loc.name,
-    description: `BluJ ${loc.name} — ${loc.address}. Fuel, convenience, and deli.`,
+    description: `BluJ ${loc.name}, ${loc.address}. Fuel, convenience, and deli.`,
     openGraph: { title: `${loc.name} | BluJ`, description: loc.address },
   };
 }
@@ -70,7 +70,7 @@ export default async function LocationPage({ params }: { params: Promise<{ slug:
                   <div key={day} className="flex justify-between text-sm border-b border-surface/50 pb-2">
                     <span className="text-ghost">{day}</span>
                     <span className="text-clean tabular-nums">
-                      {entry?.closed ? "Closed" : entry ? `${entry.open} – ${entry.close}` : "—"}
+                      {entry?.closed ? "Closed" : entry ? `${entry.open} – ${entry.close}` : "N/A"}
                     </span>
                   </div>
                 );

@@ -76,7 +76,7 @@ export async function POST(req: NextRequest) {
     from: "BluJ <onboarding@resend.dev>",
     to: ["marcelino.keyrouz16@gmail.com"],
     replyTo: email,
-    subject: `Contact form — ${name}`,
+    subject: `Contact form: ${name}`,
     text: `From: ${name} <${email}>\n\n${message}`,
   });
 

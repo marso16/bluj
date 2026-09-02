@@ -4,7 +4,7 @@ import { getJobPostings } from "@/lib/sanity/queries";
 
 export const metadata: Metadata = {
   title: "Employment",
-  description: "Join the BluJ team. We're hiring across New Hampshire and Vermont — full-time, part-time, and seasonal positions available.",
+  description: "Join the BluJ team. We're hiring across New Hampshire and Vermont. Full-time, part-time, and seasonal positions available.",
   openGraph: { title: "Work at BluJ", description: "Join the BluJ team across NH and VT." },
 };
 
@@ -54,7 +54,7 @@ export default async function EmploymentPage() {
             ))}
           </div>
           <div className="h-px bg-glow/20 mt-px" />
-          <p className="text-ghost text-xs mt-4">Apply below — mention the position you're interested in.</p>
+          <p className="text-ghost text-xs mt-4">Apply below. Mention the position you're interested in.</p>
         </div>
       )}
 

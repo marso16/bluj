@@ -6,7 +6,7 @@ import BackToTop from '@/components/layout/BackToTop'
 
 export const metadata: Metadata = {
   title: { default: 'BluJ', template: '%s | BluJ' },
-  description: 'BluJ — local gas stations, convenience stores, and deli across New Hampshire and Vermont.',
+  description: 'BluJ: local gas stations, convenience stores, and deli across New Hampshire and Vermont.',
   openGraph: {
     siteName: 'BluJ',
     locale: 'en_US',

@@ -4,7 +4,7 @@ import RewardsSignup from "@/components/rewards/RewardsSignup";
 export const metadata: Metadata = {
   title: "BluJ Rewards",
   description: "Join the BluJ Rewards waitlist. Earn points on every gallon, every coffee, every deli order. Coming soon to NH and VT.",
-  openGraph: { title: "BluJ Rewards", description: "Coming soon — earn points at every BluJ station." },
+  openGraph: { title: "BluJ Rewards", description: "Coming soon. Earn points at every BluJ station." },
 };
 
 const PERKS = [
@@ -24,7 +24,7 @@ export default function RewardsPage() {
           BluJ<br /><span className="text-glow">Rewards.</span>
         </h1>
         <p className="text-ghost text-lg leading-relaxed">
-          Every gallon, every coffee, every sandwich — earning something back. We're building a rewards program for people who actually stop here, not just whoever downloaded the app.
+          Every gallon, every coffee, every sandwich. Earning something back. We're building a rewards program for people who actually stop here, not just whoever downloaded the app.
         </p>
       </div>
 
@@ -46,7 +46,7 @@ export default function RewardsPage() {
           Join the waitlist.
         </h2>
         <p className="text-ghost mb-8 leading-relaxed">
-          Drop your email and you'll be first to know when BluJ Rewards launches — plus a bonus on your first fill-up.
+          Drop your email and you'll be first to know when BluJ Rewards launches, plus a bonus on your first fill-up.
         </p>
         <RewardsSignup />
       </div>

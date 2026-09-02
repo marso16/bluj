@@ -91,7 +91,7 @@ export default function ContactForm() {
       </div>
       {status === "error" && (
         <p className="text-red-400 text-sm border-l-2 border-red-400 pl-4">
-          Something went wrong — please try again.
+          Something went wrong. Please try again.
         </p>
       )}
       <button

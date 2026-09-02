@@ -22,7 +22,7 @@ export default function Hero({ settings }: { settings: SiteSettings }) {
 
         <p className="text-clean/70 text-lg md:text-xl mt-6 max-w-xl leading-relaxed">
           {settings.heroSubtext ||
-            "Your local gas station, convenience store, and deli — open when you need us."}
+            "Your local gas station, convenience store, and deli. Open when you need us."}
         </p>
 
         <div className="flex flex-wrap gap-4 mt-10">

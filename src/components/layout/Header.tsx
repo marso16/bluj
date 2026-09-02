@@ -26,10 +26,10 @@ export default function Header() {
   return (
     <>
       <header className="fixed top-0 left-0 right-0 z-50">
-        {/* Canopy edge — amber line */}
+        {/* Canopy edge */}
         <div className="h-0.5 bg-glow" />
 
-        {/* Brand strip — desktop only, collapses on scroll like driving past the sign */}
+        {/* Brand strip, desktop only, collapses on scroll */}
         <div
           className={`hidden md:block bg-ink/95 backdrop-blur-sm overflow-hidden transition-all duration-500 ease-in-out ${
             scrolled ? "max-h-0" : "max-h-24"
@@ -45,7 +45,7 @@ export default function Header() {
           </div>
         </div>
 
-        {/* Nav strip — always visible on desktop */}
+        {/* Nav strip */}
         <div className="hidden md:block bg-surface/90 backdrop-blur-sm border-b border-white/5">
           <div className="h-10 flex items-center justify-center gap-10">
             {NAV.map((item) => (
@@ -60,7 +60,7 @@ export default function Header() {
           </div>
         </div>
 
-        {/* Mobile — single row */}
+        {/* Mobile single row */}
         <div className="md:hidden bg-ink/95 backdrop-blur-sm border-b border-white/5">
           <div className="h-14 flex items-center justify-between px-6">
             <Link
@@ -80,7 +80,7 @@ export default function Header() {
         </div>
       </header>
 
-      {/* Mobile fullscreen overlay — nav as price board */}
+      {/* Mobile fullscreen overlay */}
       <div
         className={`fixed inset-0 z-40 bg-ink flex flex-col justify-end pb-16 px-8 md:hidden transition-opacity duration-300 ${
           menuOpen

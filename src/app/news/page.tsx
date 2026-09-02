@@ -25,7 +25,7 @@ export default async function NewsPage() {
       </h1>
 
       {posts.length === 0 ? (
-        <p className="text-ghost text-sm">No posts yet — check back soon.</p>
+        <p className="text-ghost text-sm">No posts yet. Check back soon.</p>
       ) : (
         <div className="flex flex-col gap-px bg-surface/30">
           {posts.map((post) => (
