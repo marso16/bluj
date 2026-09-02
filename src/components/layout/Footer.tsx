@@ -1,5 +1,6 @@
 import Link from "next/link";
 import NewsletterSignup from "./NewsletterSignup";
+import FuelTicker from "./FuelTicker";
 
 const SOCIAL = [
   {
@@ -88,6 +89,8 @@ export default function Footer() {
           </nav>
         </div>
       </div>
+
+      <FuelTicker />
 
       {/* Newsletter strip */}
       <div className="border-t border-surface/40 bg-ink px-8 md:px-16 py-8 flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:justify-between">
