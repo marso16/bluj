@@ -7,6 +7,7 @@ const schema = z.object({
   email: z.string().email(),
   phone: z.string().optional(),
   message: z.string().max(2000).optional(),
+  position: z.string().max(200).optional(),
 });
 
 const writeClient = createClient({
@@ -21,15 +22,19 @@ export async function POST(req: NextRequest) {
   const formData = await req.formData().catch(() => null);
   if (!formData) return NextResponse.json({ error: "Invalid request" }, { status: 400 });
 
+  // Honeypot: bots fill this, humans don't
+  if (formData.get("website")) return NextResponse.json({ ok: true });
+
   const parsed = schema.safeParse({
     name: formData.get("name"),
     email: formData.get("email"),
     phone: formData.get("phone") || undefined,
     message: formData.get("message") || undefined,
+    position: formData.get("position") || undefined,
   });
   if (!parsed.success) return NextResponse.json({ error: "Invalid input" }, { status: 400 });
 
-  const { name, email, phone, message } = parsed.data;
+  const { name, email, phone, message, position } = parsed.data;
 
   // Upload CV if provided
   let cvAssetRef: string | null = null;
@@ -49,6 +54,7 @@ export async function POST(req: NextRequest) {
     email,
     phone: phone ?? "",
     message: message ?? "",
+    position: position ?? "",
     ...(cvAssetRef ? { cv: { _type: "file", asset: { _type: "reference", _ref: cvAssetRef } } } : {}),
     submittedAt: new Date().toISOString(),
     status: "new",

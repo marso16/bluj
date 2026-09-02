@@ -58,7 +58,7 @@ export default async function EmploymentPage() {
         </div>
       )}
 
-      <EmploymentForm />
+      <EmploymentForm jobs={jobs} />
     </div>
   );
 }

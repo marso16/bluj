@@ -14,6 +14,7 @@ export default function ContactForm() {
     email: "",
     message: "",
   });
+  const [website, setWebsite] = useState("");
   const [status, setStatus] = useState<Status>("idle");
 
   const update =
@@ -28,7 +29,7 @@ export default function ContactForm() {
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
+        body: JSON.stringify({ ...form, website }),
       });
       setStatus(res.ok ? "sent" : "error");
     } catch {
@@ -51,6 +52,16 @@ export default function ContactForm() {
 
   return (
     <form onSubmit={submit} className="space-y-6">
+      <input
+        name="website"
+        type="text"
+        tabIndex={-1}
+        autoComplete="off"
+        aria-hidden="true"
+        value={website}
+        onChange={(e) => setWebsite(e.target.value)}
+        className="absolute left-[-9999px] w-0 h-0 overflow-hidden"
+      />
       <div>
         <label className="text-ghost text-[11px] uppercase tracking-[0.2em] block mb-2">
           Name *

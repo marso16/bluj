@@ -1,13 +1,14 @@
 "use client";
 
 import { useRef, useState } from "react";
+import type { JobPosting } from "@/lib/sanity/types";
 
 type Status = "idle" | "sending" | "sent" | "error";
 
 const inputClass =
   "w-full bg-ink border border-surface px-4 py-3 text-clean placeholder-ghost focus:outline-none focus:border-charge transition-colors duration-200";
 
-export default function EmploymentForm() {
+export default function EmploymentForm({ jobs = [] }: { jobs?: JobPosting[] }) {
   const [status, setStatus] = useState<Status>("idle");
   const [cvName, setCvName] = useState<string | null>(null);
   const formRef = useRef<HTMLFormElement>(null);
@@ -18,6 +19,8 @@ export default function EmploymentForm() {
     setStatus("sending");
     try {
       const formData = new FormData(formRef.current);
+      // Honeypot: silently abort if bot filled it
+      if (formData.get("website")) { setStatus("sent"); return; }
       const res = await fetch("/api/apply", { method: "POST", body: formData });
       setStatus(res.ok ? "sent" : "error");
     } catch {
@@ -38,6 +41,33 @@ export default function EmploymentForm() {
 
   return (
     <form ref={formRef} onSubmit={submit} className="space-y-6">
+      {/* Honeypot */}
+      <input
+        name="website"
+        type="text"
+        tabIndex={-1}
+        autoComplete="off"
+        aria-hidden="true"
+        className="absolute left-[-9999px] w-0 h-0 overflow-hidden"
+      />
+
+      {jobs.length > 0 && (
+        <div>
+          <label className="text-ghost text-[11px] uppercase tracking-[0.2em] block mb-2">Position</label>
+          <select
+            name="position"
+            className={`${inputClass} appearance-none cursor-pointer`}
+          >
+            <option value="">Any position</option>
+            {jobs.map((job) => (
+              <option key={job._id} value={job.title}>
+                {job.title}{job.location ? ` — ${job.location}` : ""}
+              </option>
+            ))}
+          </select>
+        </div>
+      )}
+
       <div>
         <label className="text-ghost text-[11px] uppercase tracking-[0.2em] block mb-2">Full Name *</label>
         <input required name="name" className={inputClass} placeholder="Jane Smith" />

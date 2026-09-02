@@ -4,6 +4,7 @@ import { useState } from "react";
 
 export default function NewsletterSignup() {
   const [email, setEmail] = useState("");
+  const [website, setWebsite] = useState("");
   const [state, setState] = useState<"idle" | "loading" | "done" | "already" | "error">("idle");
 
   async function submit(e: React.FormEvent) {
@@ -12,7 +13,7 @@ export default function NewsletterSignup() {
     const res = await fetch("/api/newsletter", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email }),
+      body: JSON.stringify({ email, website }),
     });
     if (!res.ok) { setState("error"); return; }
     const data = await res.json();
@@ -37,6 +38,16 @@ export default function NewsletterSignup() {
 
   return (
     <form onSubmit={submit} className="flex gap-0">
+      <input
+        name="website"
+        type="text"
+        tabIndex={-1}
+        autoComplete="off"
+        aria-hidden="true"
+        value={website}
+        onChange={(e) => setWebsite(e.target.value)}
+        className="absolute left-[-9999px] w-0 h-0 overflow-hidden"
+      />
       <input
         type="email"
         required

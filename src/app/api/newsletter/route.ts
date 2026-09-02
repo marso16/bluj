@@ -5,7 +5,7 @@ import { z } from "zod";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
-const schema = z.object({ email: z.string().email() });
+const schema = z.object({ email: z.string().email(), website: z.string().optional() });
 
 const writeClient = createClient({
   projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID!,
@@ -20,6 +20,9 @@ export async function POST(req: NextRequest) {
   const parsed = schema.safeParse(body);
   if (!parsed.success)
     return NextResponse.json({ error: "Invalid email" }, { status: 400 });
+
+  // Honeypot: bots fill this, humans don't
+  if (parsed.data.website) return NextResponse.json({ ok: true });
 
   // Check for existing subscriber to avoid duplicates
   const existing = await writeClient.fetch(

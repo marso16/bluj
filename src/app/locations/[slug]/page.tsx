@@ -125,7 +125,17 @@ export default async function LocationPage({ params }: { params: Promise<{ slug:
 
       {/* Map */}
       <div className="mt-12 border-t border-surface/50 pt-12">
-        <p className="text-ghost text-[11px] uppercase tracking-[0.2em] mb-4">Map</p>
+        <div className="flex items-center justify-between mb-4">
+          <p className="text-ghost text-[11px] uppercase tracking-[0.2em]">Map</p>
+          <a
+            href={`https://maps.google.com/maps?daddr=${encodeURIComponent(loc.address)}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-charge text-[10px] uppercase tracking-[0.2em] hover:text-charge/70 transition-colors"
+          >
+            Get Directions →
+          </a>
+        </div>
         <iframe
           src={`https://maps.google.com/maps?q=${encodeURIComponent(loc.address)}&output=embed&z=15`}
           width="100%"

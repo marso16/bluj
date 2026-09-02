@@ -1,4 +1,5 @@
 import { getPost, getPosts } from "@/lib/sanity/queries";
+import { urlFor } from "@/lib/sanity/client";
 import Breadcrumb from "@/components/layout/Breadcrumb";
 import ShareButton from "@/components/news/ShareButton";
 import { notFound } from "next/navigation";
@@ -57,6 +58,16 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
       <h1 className="font-display font-black text-clean text-5xl md:text-7xl mt-3 mb-10 leading-none">
         {post.title}
       </h1>
+
+      {post.image && (
+        <div className="-mx-6 mb-10">
+          <img
+            src={urlFor(post.image).width(1200).url()}
+            alt={post.title}
+            className="w-full object-cover max-h-[420px]"
+          />
+        </div>
+      )}
 
       <div className="h-px bg-glow/20 mb-10" />
 

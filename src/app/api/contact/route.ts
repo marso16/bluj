@@ -6,6 +6,7 @@ const schema = z.object({
   name: z.string().min(2).max(100),
   email: z.string().email(),
   message: z.string().min(10).max(3000),
+  website: z.string().optional(),
 });
 
 const resend = new Resend(process.env.RESEND_API_KEY);
@@ -68,6 +69,9 @@ export async function POST(req: NextRequest) {
   const parsed = schema.safeParse(body);
   if (!parsed.success)
     return NextResponse.json({ error: "Invalid input" }, { status: 400 });
+
+  // Honeypot: bots fill this, humans don't
+  if (parsed.data.website) return NextResponse.json({ ok: true });
 
   const { name, email, message } = parsed.data;
 

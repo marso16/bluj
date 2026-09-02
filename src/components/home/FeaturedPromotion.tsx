@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { urlFor } from "@/lib/sanity/client";
 import type { Promotion } from "@/lib/sanity/types";
 
@@ -35,6 +36,12 @@ export default function FeaturedPromotion({
                 {promotion.description}
               </p>
             )}
+            <Link
+              href="/promotions"
+              className="inline-block mt-5 text-glow text-[10px] uppercase tracking-[0.2em] hover:text-glow/70 transition-colors"
+            >
+              See All Promotions →
+            </Link>
           </div>
         </div>
       </div>
