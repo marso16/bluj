@@ -1,5 +1,6 @@
 import { getLocation, getLocations } from "@/lib/sanity/queries";
 import OpenIndicator from "@/components/home/OpenIndicator";
+import Breadcrumb from "@/components/layout/Breadcrumb";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
@@ -46,12 +47,7 @@ export default async function LocationPage({ params }: { params: Promise<{ slug:
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
     <div className="max-w-4xl mx-auto px-6 py-24">
-      <Link
-        href="/locations"
-        className="text-ghost text-[10px] uppercase tracking-[0.2em] hover:text-clean transition-colors mb-10 block"
-      >
-        ← All Locations
-      </Link>
+      <Breadcrumb items={[{ label: "Locations", href: "/locations" }, { label: loc.name }]} />
 
       <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 mb-12">
         <div>
