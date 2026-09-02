@@ -1,6 +1,7 @@
 import { getLocation, getLocations } from "@/lib/sanity/queries";
 import OpenIndicator from "@/components/home/OpenIndicator";
 import Breadcrumb from "@/components/layout/Breadcrumb";
+import CopyAddress from "@/components/locations/CopyAddress";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
@@ -56,6 +57,7 @@ export default async function LocationPage({ params }: { params: Promise<{ slug:
             {loc.name}
           </h1>
           <p className="text-ghost mt-4">{loc.address}</p>
+          <CopyAddress address={loc.address} />
           {loc.phone && (
             <a href={`tel:${loc.phone}`} className="text-charge text-sm mt-1 block hover:text-charge/70 transition-colors">
               {loc.phone}
