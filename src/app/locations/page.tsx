@@ -1,6 +1,7 @@
 import { getLocations } from "@/lib/sanity/queries";
 import OpenIndicator from "@/components/home/OpenIndicator";
 import NearestLocation from "@/components/locations/NearestLocation";
+import Link from "next/link";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -41,6 +42,12 @@ export default async function LocationsPage() {
             key={loc._id}
             className="bg-surface p-8 border border-ink/50 hover:border-charge/20 transition-colors duration-300"
           >
+            <Link
+              href={`/locations/${loc.slug.current}`}
+              className="text-charge text-[10px] uppercase tracking-[0.2em] hover:text-charge/70 transition-colors float-right"
+            >
+              Full Details →
+            </Link>
             <div className="flex items-start justify-between gap-4">
               <div>
                 <h2 className="text-clean font-display font-black text-3xl leading-none">

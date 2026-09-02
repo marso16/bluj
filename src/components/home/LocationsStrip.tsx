@@ -26,7 +26,7 @@ export default function LocationsStrip({ locations }: { locations: Location[] })
             return (
               <Link
                 key={loc._id}
-                href="/locations"
+                href={`/locations/${loc.slug.current}`}
                 className="snap-start flex-shrink-0 w-64 bg-ink p-6 flex flex-col gap-3 border-l-2 border-transparent border-r border-r-surface hover:border-l-glow hover:bg-surface transition-all duration-200 group"
               >
                 <OpenIndicator hours={loc.hours ?? []} />
@@ -47,7 +47,7 @@ export default function LocationsStrip({ locations }: { locations: Location[] })
                     ))}
                   </div>
                 )}
-                <p className="text-glow text-[10px] uppercase tracking-[0.2em]">View map →</p>
+                <p className="text-glow text-[10px] uppercase tracking-[0.2em]">View location →</p>
               </Link>
             )
           })}

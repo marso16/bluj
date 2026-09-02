@@ -33,6 +33,16 @@ export async function getProducts(): Promise<Product[]> {
   `);
 }
 
+export async function getLocation(slug: string): Promise<Location | null> {
+  const loc: Location | null = await sanityClient.fetch(
+    `*[_type == "location" && slug.current == $slug][0] {
+      _id, name, address, phone, slug, hours, amenities, photos, fuelPrices, lat, lng
+    }`,
+    { slug }
+  );
+  return loc ?? null;
+}
+
 export async function getPosts(): Promise<Post[]> {
   return sanityClient.fetch(`
     *[_type == "post"] | order(publishedAt desc) {
