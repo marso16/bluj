@@ -42,6 +42,14 @@ export interface Product {
   featured: boolean;
 }
 
+export interface WeeklySpecial {
+  _id: string;
+  item: string;
+  price: string;
+  note?: string;
+  active: boolean;
+}
+
 export interface Post {
   _id: string;
   title: string;

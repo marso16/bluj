@@ -9,6 +9,7 @@ export const structure = (S: StructureBuilder) =>
       S.documentTypeListItem("product").title("Products"),
       S.divider(),
       S.documentTypeListItem("post").title("News Posts"),
+      S.documentTypeListItem("weeklySpecial").title("Weekly Specials"),
       S.documentTypeListItem("jobPosting").title("Job Postings"),
       S.documentTypeListItem("jobApplication").title("Job Applications"),
       S.documentTypeListItem("newsletterSubscriber").title("Newsletter Subscribers"),

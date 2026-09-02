@@ -1,5 +1,5 @@
 import { sanityClient } from "./client";
-import type { Location, Promotion, Product, JobPosting, Post, SiteSettings } from "./types";
+import type { Location, Promotion, Product, JobPosting, Post, WeeklySpecial, SiteSettings } from "./types";
 
 export async function getLocations(): Promise<Location[]> {
   return sanityClient.fetch(`
@@ -29,6 +29,14 @@ export async function getProducts(): Promise<Product[]> {
   return sanityClient.fetch(`
     *[_type == "product"] | order(category asc, name asc) {
       _id, name, category, description, image, featured
+    }
+  `);
+}
+
+export async function getWeeklySpecials(): Promise<WeeklySpecial[]> {
+  return sanityClient.fetch(`
+    *[_type == "weeklySpecial" && active == true] | order(_createdAt asc) {
+      _id, item, price, note, active
     }
   `);
 }

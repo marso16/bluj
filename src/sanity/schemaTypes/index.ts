@@ -5,6 +5,7 @@ import { jobApplicationSchema } from "./jobApplication";
 import { jobPostingSchema } from "./jobPosting";
 import { newsletterSubscriberSchema } from "./newsletterSubscriber";
 import { postSchema } from "./post";
+import { weeklySpecialSchema } from "./weeklySpecial";
 import { siteSettingsSchema } from "./siteSettings";
 
 export const schemaTypes = [
@@ -15,5 +16,6 @@ export const schemaTypes = [
   jobPostingSchema,
   newsletterSubscriberSchema,
   postSchema,
+  weeklySpecialSchema,
   siteSettingsSchema,
 ];
