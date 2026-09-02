@@ -1,4 +1,5 @@
 import Link from "next/link";
+import NewsletterSignup from "./NewsletterSignup";
 
 const SOCIAL = [
   { label: "Instagram", href: "https://instagram.com/blujfuel", icon: "IG" },
@@ -67,6 +68,15 @@ export default function Footer() {
             </Link>
           </nav>
         </div>
+      </div>
+
+      {/* Newsletter strip */}
+      <div className="border-t border-surface/40 bg-ink px-8 md:px-16 py-8 flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:justify-between">
+        <div>
+          <p className="text-ghost text-[11px] uppercase tracking-[0.2em]">Deals &amp; Updates</p>
+          <p className="text-clean text-sm mt-0.5">Get weekly specials straight to your inbox.</p>
+        </div>
+        <NewsletterSignup />
       </div>
 
       {/* Canopy edge — mirrors the header's amber top line */}

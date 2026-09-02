@@ -3,6 +3,7 @@ import { promotionSchema } from "./promotion";
 import { productSchema } from "./product";
 import { jobApplicationSchema } from "./jobApplication";
 import { jobPostingSchema } from "./jobPosting";
+import { newsletterSubscriberSchema } from "./newsletterSubscriber";
 import { siteSettingsSchema } from "./siteSettings";
 
 export const schemaTypes = [
@@ -11,5 +12,6 @@ export const schemaTypes = [
   productSchema,
   jobApplicationSchema,
   jobPostingSchema,
+  newsletterSubscriberSchema,
   siteSettingsSchema,
 ];
