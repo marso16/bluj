@@ -5,6 +5,11 @@ export interface HoursEntry {
   closed: boolean;
 }
 
+export interface FuelPrice {
+  grade: string;
+  price: number;
+}
+
 export interface Location {
   _id: string;
   name: string;
@@ -14,6 +19,9 @@ export interface Location {
   hours: HoursEntry[];
   amenities: string[];
   photos?: { asset: { _ref: string } }[];
+  fuelPrices?: FuelPrice[];
+  lat?: number;
+  lng?: number;
 }
 
 export interface Promotion {

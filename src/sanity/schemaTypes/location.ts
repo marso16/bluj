@@ -63,5 +63,19 @@ export const locationSchema = defineType({
       type: "array",
       of: [{ type: "image", options: { hotspot: true } }],
     }),
+    defineField({
+      name: "fuelPrices",
+      title: "Fuel Prices",
+      type: "array",
+      of: [{
+        type: "object",
+        fields: [
+          { name: "grade", title: "Grade", type: "string" },
+          { name: "price", title: "Price per Gallon ($)", type: "number" },
+        ],
+      }],
+    }),
+    defineField({ name: "lat", title: "Latitude", type: "number" }),
+    defineField({ name: "lng", title: "Longitude", type: "number" }),
   ],
 });

@@ -1,5 +1,6 @@
 import { getLocations } from "@/lib/sanity/queries";
 import OpenIndicator from "@/components/home/OpenIndicator";
+import NearestLocation from "@/components/locations/NearestLocation";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = { title: "Locations | BluJ" };
@@ -23,9 +24,12 @@ export default async function LocationsPage() {
       <p className="text-ghost text-xs uppercase tracking-widest mb-3">
         Where To Find Us
       </p>
-      <h1 className="font-display font-black text-clean text-6xl md:text-8xl mb-16">
+      <h1 className="font-display font-black text-clean text-6xl md:text-8xl mb-6">
         Locations
       </h1>
+      <div className="mb-16">
+        <NearestLocation locations={locations} />
+      </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {locations.map((loc) => (
@@ -52,6 +56,17 @@ export default async function LocationsPage() {
                 <OpenIndicator hours={loc.hours ?? []} />
               </div>
             </div>
+
+            {loc.fuelPrices && loc.fuelPrices.length > 0 && (
+              <div className="flex flex-wrap gap-4 mt-5 pt-5 border-t border-ink/50">
+                {loc.fuelPrices.map((fp) => (
+                  <div key={fp.grade} className="flex flex-col gap-0.5">
+                    <p className="text-ghost text-[10px] uppercase tracking-[0.2em]">{fp.grade}</p>
+                    <p className="font-display font-black text-glow text-xl leading-none">${fp.price.toFixed(3)}</p>
+                  </div>
+                ))}
+              </div>
+            )}
 
             {loc.amenities?.length > 0 && (
               <div className="flex flex-wrap gap-1.5 mt-5">

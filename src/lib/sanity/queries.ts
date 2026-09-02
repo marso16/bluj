@@ -4,7 +4,7 @@ import type { Location, Promotion, Product, SiteSettings } from "./types";
 export async function getLocations(): Promise<Location[]> {
   return sanityClient.fetch(`
     *[_type == "location"] | order(name asc) {
-      _id, name, address, phone, slug, hours, amenities, photos
+      _id, name, address, phone, slug, hours, amenities, photos, fuelPrices, lat, lng
     }
   `);
 }

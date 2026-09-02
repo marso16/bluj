@@ -1,5 +1,6 @@
 import { getLocations, getActivePromotion, getProducts, getSiteSettings } from '@/lib/sanity/queries'
 import Hero from '@/components/home/Hero'
+import FuelPriceBoard from '@/components/home/FuelPriceBoard'
 import LocationsStrip from '@/components/home/LocationsStrip'
 import FeaturedPromotion from '@/components/home/FeaturedPromotion'
 import ProductsGrid from '@/components/home/ProductsGrid'
@@ -18,6 +19,7 @@ export default async function HomePage() {
   return (
     <>
       <Hero settings={settings} />
+      <FuelPriceBoard locations={locations} />
       <LocationsStrip locations={locations} />
       <FeaturedPromotion promotion={promotion} />
       <ProductsGrid products={products} />
