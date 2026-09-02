@@ -1,5 +1,6 @@
 import { getPost, getPosts } from "@/lib/sanity/queries";
 import Breadcrumb from "@/components/layout/Breadcrumb";
+import ShareButton from "@/components/news/ShareButton";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 
@@ -58,6 +59,10 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
       </h1>
 
       <div className="h-px bg-glow/20 mb-10" />
+
+      <div className="flex justify-end mb-8">
+        <ShareButton title={post.title} url={`https://bluj.com/news/${post.slug.current}`} />
+      </div>
 
       {post.excerpt && (
         <p className="text-clean text-lg leading-relaxed mb-8 font-medium">{post.excerpt}</p>
