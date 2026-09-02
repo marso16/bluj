@@ -1,5 +1,10 @@
 import Link from "next/link";
 
+const SOCIAL = [
+  { label: "Instagram", href: "https://instagram.com/blujfuel", icon: "IG" },
+  { label: "Facebook", href: "https://facebook.com/blujfuel", icon: "FB" },
+];
+
 const NAV = [
   { label: "Home", href: "/" },
   { label: "Products", href: "/products" },
@@ -27,6 +32,20 @@ export default function Footer() {
             <p className="text-ghost text-[11px] uppercase tracking-[0.25em] mt-3">
               New Hampshire &amp; Vermont
             </p>
+            <div className="flex gap-4 mt-5">
+              {SOCIAL.map((s) => (
+                <a
+                  key={s.label}
+                  href={s.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={s.label}
+                  className="text-ghost/50 hover:text-glow text-[11px] uppercase tracking-[0.2em] transition-colors duration-200"
+                >
+                  {s.icon}
+                </a>
+              ))}
+            </div>
           </div>
 
           {/* Nav — bottom-aligned right */}
