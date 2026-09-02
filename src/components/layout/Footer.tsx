@@ -35,7 +35,7 @@ export default function Footer() {
             <p className="text-ghost text-[11px] uppercase tracking-[0.25em] mt-3">
               New Hampshire &amp; Vermont
             </p>
-            <div className="flex gap-4 mt-5">
+            <div className="flex gap-2 mt-5">
               {SOCIAL.map((s) => (
                 <a
                   key={s.label}
@@ -43,9 +43,9 @@ export default function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={s.label}
-                  className="text-ghost/50 hover:text-glow text-[11px] uppercase tracking-[0.2em] transition-colors duration-200"
+                  className="border border-surface hover:border-glow text-ghost hover:text-glow text-[11px] uppercase tracking-[0.2em] px-4 py-2 transition-colors duration-200"
                 >
-                  {s.icon}
+                  {s.label}
                 </a>
               ))}
             </div>
