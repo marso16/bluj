@@ -29,7 +29,22 @@ export default async function LocationPage({ params }: { params: Promise<{ slug:
   const loc = await getLocation(slug);
   if (!loc) notFound();
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "GasStation",
+    "name": `BluJ ${loc.name}`,
+    "address": { "@type": "PostalAddress", "streetAddress": loc.address, "addressCountry": "US" },
+    ...(loc.phone ? { "telephone": loc.phone } : {}),
+    ...(loc.lat && loc.lng ? { "geo": { "@type": "GeoCoordinates", "latitude": loc.lat, "longitude": loc.lng } } : {}),
+    "openingHoursSpecification": (loc.hours ?? [])
+      .filter(h => !h.closed)
+      .map(h => ({ "@type": "OpeningHoursSpecification", "dayOfWeek": `https://schema.org/${h.day}`, "opens": h.open, "closes": h.close })),
+    "url": `https://bluj.com/locations/${loc.slug.current}`,
+  };
+
   return (
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
     <div className="max-w-4xl mx-auto px-6 py-24">
       <Link
         href="/locations"
@@ -125,5 +140,6 @@ export default async function LocationPage({ params }: { params: Promise<{ slug:
         />
       </div>
     </div>
+    </>
   );
 }
