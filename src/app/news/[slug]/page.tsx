@@ -31,7 +31,19 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
   const post = await getPost(slug);
   if (!post) notFound();
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "NewsArticle",
+    "headline": post.title,
+    ...(post.publishedAt ? { "datePublished": post.publishedAt } : {}),
+    ...(post.excerpt ? { "description": post.excerpt } : {}),
+    "publisher": { "@type": "Organization", "name": "BluJ", "url": "https://bluj.com" },
+    "url": `https://bluj.com/news/${post.slug.current}`,
+  };
+
   return (
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
     <div className="max-w-2xl mx-auto px-6 py-24">
       <Link
         href="/news"
@@ -60,5 +72,6 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
         <div className="text-ghost leading-relaxed whitespace-pre-wrap">{post.body}</div>
       )}
     </div>
+    </>
   );
 }
