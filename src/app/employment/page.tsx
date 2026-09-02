@@ -1,7 +1,11 @@
 import type { Metadata } from "next";
 import EmploymentForm from "@/components/employment/EmploymentForm";
 
-export const metadata: Metadata = { title: "Employment | BluJ" };
+export const metadata: Metadata = {
+  title: "Employment",
+  description: "Join the BluJ team. We're hiring across New Hampshire and Vermont — full-time, part-time, and seasonal positions available.",
+  openGraph: { title: "Work at BluJ", description: "Join the BluJ team across NH and VT." },
+};
 
 export default function EmploymentPage() {
   return (

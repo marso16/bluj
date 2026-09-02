@@ -3,7 +3,11 @@ import OpenIndicator from "@/components/home/OpenIndicator";
 import NearestLocation from "@/components/locations/NearestLocation";
 import type { Metadata } from "next";
 
-export const metadata: Metadata = { title: "Locations | BluJ" };
+export const metadata: Metadata = {
+  title: "Locations",
+  description: "Find your nearest BluJ gas station in New Hampshire and Vermont. View hours, fuel prices, and directions.",
+  openGraph: { title: "Locations | BluJ", description: "Find your nearest BluJ — hours, fuel prices, and maps." },
+};
 export const revalidate = 60;
 
 const DAYS = [

@@ -1,7 +1,11 @@
 import type { Metadata } from "next";
 import ContactForm from "@/components/contact/ContactForm";
 
-export const metadata: Metadata = { title: "Contact | BluJ" };
+export const metadata: Metadata = {
+  title: "Contact",
+  description: "Get in touch with BluJ. Questions, feedback, or anything else — we're listening.",
+  openGraph: { title: "Contact BluJ", description: "Questions or feedback? Reach out to the BluJ team." },
+};
 
 export default function ContactPage() {
   return (

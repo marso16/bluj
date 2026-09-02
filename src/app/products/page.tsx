@@ -3,7 +3,11 @@ import { urlFor } from "@/lib/sanity/client";
 import type { Metadata } from "next";
 import type { Product } from "@/lib/sanity/types";
 
-export const metadata: Metadata = { title: "Products | BluJ" };
+export const metadata: Metadata = {
+  title: "Products",
+  description: "Fuel, deli, convenience items, and more at every BluJ location across NH and VT.",
+  openGraph: { title: "Products | BluJ", description: "Fuel, deli, convenience items, and more at every BluJ location." },
+};
 export const revalidate = 60;
 
 const CATEGORIES: { key: Product["category"]; label: string }[] = [

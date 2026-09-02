@@ -4,8 +4,14 @@ import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
 
 export const metadata: Metadata = {
-  title: 'BluJ | Your Local Gas Station',
-  description: 'BluJ — local gas stations, convenience stores, and deli across NH and VT.',
+  title: { default: 'BluJ', template: '%s | BluJ' },
+  description: 'BluJ — local gas stations, convenience stores, and deli across New Hampshire and Vermont.',
+  openGraph: {
+    siteName: 'BluJ',
+    locale: 'en_US',
+    type: 'website',
+  },
+  twitter: { card: 'summary_large_image' },
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
