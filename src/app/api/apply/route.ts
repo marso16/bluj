@@ -6,7 +6,6 @@ const schema = z.object({
   name: z.string().min(2).max(100),
   email: z.string().email(),
   phone: z.string().optional(),
-  preferredLocation: z.string().optional(),
   message: z.string().max(2000).optional(),
 });
 
@@ -19,21 +18,38 @@ const writeClient = createClient({
 });
 
 export async function POST(req: NextRequest) {
-  const body = await req.json().catch(() => null);
-  const parsed = schema.safeParse(body);
-  if (!parsed.success)
-    return NextResponse.json({ error: "Invalid input" }, { status: 400 });
+  const formData = await req.formData().catch(() => null);
+  if (!formData) return NextResponse.json({ error: "Invalid request" }, { status: 400 });
 
-  const { name, email, phone, preferredLocation, message } = parsed.data;
+  const parsed = schema.safeParse({
+    name: formData.get("name"),
+    email: formData.get("email"),
+    phone: formData.get("phone") || undefined,
+    message: formData.get("message") || undefined,
+  });
+  if (!parsed.success) return NextResponse.json({ error: "Invalid input" }, { status: 400 });
+
+  const { name, email, phone, message } = parsed.data;
+
+  // Upload CV if provided
+  let cvAssetRef: string | null = null;
+  const cvFile = formData.get("cv");
+  if (cvFile instanceof File && cvFile.size > 0) {
+    const buffer = Buffer.from(await cvFile.arrayBuffer());
+    const asset = await writeClient.assets.upload("file", buffer, {
+      filename: cvFile.name,
+      contentType: cvFile.type || "application/pdf",
+    });
+    cvAssetRef = asset._id;
+  }
+
   await writeClient.create({
     _type: "jobApplication",
     name,
     email,
     phone: phone ?? "",
-    ...(preferredLocation
-      ? { preferredLocation: { _type: "reference", _ref: preferredLocation } }
-      : {}),
     message: message ?? "",
+    ...(cvAssetRef ? { cv: { _type: "file", asset: { _type: "reference", _ref: cvAssetRef } } } : {}),
     submittedAt: new Date().toISOString(),
     status: "new",
   });

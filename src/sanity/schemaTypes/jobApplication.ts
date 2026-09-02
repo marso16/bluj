@@ -20,6 +20,11 @@ export const jobApplicationSchema = defineType({
       type: "text",
     }),
     defineField({
+      name: "cv",
+      title: "CV / Resume",
+      type: "file",
+    }),
+    defineField({
       name: "submittedAt",
       title: "Submitted At",
       type: "datetime",
