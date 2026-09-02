@@ -42,6 +42,15 @@ export interface Product {
   featured: boolean;
 }
 
+export interface JobPosting {
+  _id: string;
+  title: string;
+  location?: string;
+  type: "full-time" | "part-time" | "seasonal";
+  description?: string;
+  active: boolean;
+}
+
 export interface SiteSettings {
   tagline?: string;
   heroHeadline?: string;
