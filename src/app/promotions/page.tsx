@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   description: "Current deals and promotions at BluJ gas stations across New Hampshire and Vermont.",
   openGraph: { title: "Promotions | BluJ", description: "Current deals at BluJ." },
 };
-export const revalidate = 60;
+export const revalidate = 300;
 
 function formatRange(start?: string, end?: string) {
   if (!start && !end) return null;

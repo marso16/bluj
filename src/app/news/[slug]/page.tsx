@@ -7,7 +7,7 @@ import ShareButton from "@/components/news/ShareButton";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 
-export const revalidate = 60;
+export const revalidate = 300;
 
 export async function generateStaticParams() {
   const posts = await getPosts();

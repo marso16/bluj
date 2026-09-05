@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   description: "Latest updates, specials, and news from BluJ locations across NH and VT.",
   openGraph: { title: "News | BluJ", description: "Updates and specials from BluJ." },
 };
-export const revalidate = 60;
+export const revalidate = 300;
 
 function formatDate(iso?: string) {
   if (!iso) return "";

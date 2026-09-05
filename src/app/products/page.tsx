@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   description: "Fuel, deli, convenience items, and more at every BluJ location across NH and VT.",
   openGraph: { title: "Products | BluJ", description: "Fuel, deli, convenience items, and more at every BluJ location." },
 };
-export const revalidate = 60;
+export const revalidate = 600;
 
 export default async function ProductsPage() {
   const products = await getProducts();

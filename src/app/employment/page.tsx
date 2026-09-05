@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   openGraph: { title: "Work at BluJ", description: "Join the BluJ team across NH and VT." },
 };
 
-export const revalidate = 60;
+export const revalidate = 3600;
 
 const TYPE_LABEL: Record<string, string> = {
   "full-time": "Full-Time",

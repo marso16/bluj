@@ -7,7 +7,7 @@ import WeeklySpecials from '@/components/home/WeeklySpecials'
 import ProductsGrid from '@/components/home/ProductsGrid'
 import EmploymentTeaser from '@/components/home/EmploymentTeaser'
 
-export const revalidate = 60
+export const revalidate = 30
 
 export default async function HomePage() {
   const [locations, promotion, products, specials, settings] = await Promise.all([

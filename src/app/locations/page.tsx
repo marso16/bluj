@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   description: "Find your nearest BluJ gas station in New Hampshire and Vermont. View hours, fuel prices, and directions.",
   openGraph: { title: "Locations | BluJ", description: "Find your nearest BluJ. Hours, fuel prices, and maps." },
 };
-export const revalidate = 60;
+export const revalidate = 30;
 
 export default async function LocationsPage() {
   const locations = await getLocations();
