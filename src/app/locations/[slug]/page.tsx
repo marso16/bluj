@@ -61,9 +61,20 @@ export default async function LocationPage({ params }: { params: Promise<{ slug:
           <p className="text-ghost mt-4">{loc.address}</p>
           <CopyAddress address={loc.address} />
           {loc.phone && (
-            <a href={`tel:${loc.phone}`} className="text-charge text-sm mt-1 block hover:text-charge/70 transition-colors">
-              {loc.phone}
-            </a>
+            <div className="mt-3 flex items-center gap-3">
+              <a href={`tel:${loc.phone}`} className="text-ghost text-sm hover:text-clean transition-colors">
+                {loc.phone}
+              </a>
+              <a
+                href={`tel:${loc.phone}`}
+                className="sm:hidden inline-flex items-center gap-1.5 text-charge border border-charge/30 text-[10px] uppercase tracking-[0.2em] px-3 py-1.5 hover:bg-charge/10 transition-colors"
+              >
+                <svg viewBox="0 0 24 24" fill="currentColor" className="w-3 h-3" aria-hidden="true">
+                  <path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.02-.24c1.12.37 2.33.57 3.57.57a1 1 0 011 1V20a1 1 0 01-1 1C9.4 21 3 14.6 3 7a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.45.57 3.57a1 1 0 01-.25 1.02l-2.2 2.2z"/>
+                </svg>
+                Call
+              </a>
+            </div>
           )}
         </div>
         <div className="flex-shrink-0 mt-1">
