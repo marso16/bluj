@@ -81,7 +81,11 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
       )}
 
       {post.body && (
-        <div className="text-ghost leading-relaxed whitespace-pre-wrap">{post.body}</div>
+        <div className="flex flex-col gap-5">
+          {post.body.split(/\n\n+/).map((para, i) => (
+            <p key={i} className="text-ghost leading-relaxed whitespace-pre-wrap">{para.trim()}</p>
+          ))}
+        </div>
       )}
     </div>
     </>
