@@ -1,4 +1,5 @@
 import { getLocation, getLocations } from "@/lib/sanity/queries";
+import { urlFor } from "@/lib/sanity/client";
 import { SITE_URL } from "@/lib/site";
 import OpenIndicator from "@/components/home/OpenIndicator";
 import Breadcrumb from "@/components/layout/Breadcrumb";
@@ -123,6 +124,23 @@ export default async function LocationPage({ params }: { params: Promise<{ slug:
           )}
         </div>
       </div>
+
+      {/* Photos */}
+      {loc.photos && loc.photos.length > 0 && (
+        <div className="mt-12 border-t border-surface/50 pt-12">
+          <p className="text-ghost text-[11px] uppercase tracking-[0.2em] mb-4">Photos</p>
+          <div className="flex gap-3 overflow-x-auto pb-2 -mx-6 px-6 snap-x snap-mandatory">
+            {loc.photos.map((photo, i) => (
+              <img
+                key={i}
+                src={urlFor(photo).width(640).height(420).fit("crop").url()}
+                alt={`${loc.name} — photo ${i + 1}`}
+                className="flex-shrink-0 w-64 sm:w-80 h-44 sm:h-52 object-cover snap-start"
+              />
+            ))}
+          </div>
+        </div>
+      )}
 
       {/* Map */}
       <div className="mt-12 border-t border-surface/50 pt-12">
