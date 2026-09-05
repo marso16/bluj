@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { urlFor } from "@/lib/sanity/client";
 import Link from "next/link";
 import type { Product } from "@/lib/sanity/types";
@@ -41,12 +42,14 @@ export default function ProductsGrid({ products }: { products: Product[] }) {
             >
               {p.image && (
                 <div
-                  className={`bg-ink/50 ${i === 0 ? "h-56 md:h-72" : "h-32"}`}
+                  className={`bg-ink/50 relative ${i === 0 ? "h-56 md:h-72" : "h-32"}`}
                 >
-                  <img
+                  <Image
+                    fill
                     src={urlFor(p.image).width(600).url()}
                     alt={p.name}
-                    className="w-full h-full object-cover"
+                    className="object-cover"
+                    sizes="(max-width:768px) 100vw, 50vw"
                   />
                 </div>
               )}

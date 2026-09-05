@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { getPost, getPosts } from "@/lib/sanity/queries";
 import { urlFor } from "@/lib/sanity/client";
 import { SITE_URL } from "@/lib/site";
@@ -61,11 +62,14 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
       </h1>
 
       {post.image && (
-        <div className="-mx-6 mb-10">
-          <img
-            src={urlFor(post.image).width(1200).url()}
+        <div className="-mx-6 mb-10 relative aspect-[16/9] max-h-[420px] overflow-hidden">
+          <Image
+            fill
+            src={urlFor(post.image).width(1200).height(630).url()}
             alt={post.title}
-            className="w-full object-cover max-h-[420px]"
+            className="object-cover"
+            sizes="(max-width:672px) 100vw, 672px"
+            priority
           />
         </div>
       )}

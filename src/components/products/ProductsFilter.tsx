@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { urlFor } from "@/lib/sanity/client";
 import type { Product } from "@/lib/sanity/types";
 
@@ -46,8 +47,8 @@ export default function ProductsFilter({ products }: { products: Product[] }) {
           {/* Hero item */}
           <div className="col-span-2 md:col-span-1 bg-ink row-span-2">
             {first.image ? (
-              <div className="h-56 md:h-72 bg-surface/50">
-                <img src={urlFor(first.image).width(600).url()} alt={first.name} className="w-full h-full object-cover opacity-90" />
+              <div className="h-56 md:h-72 bg-surface/50 relative">
+                <Image fill src={urlFor(first.image).width(600).url()} alt={first.name} className="object-cover opacity-90" sizes="(max-width:768px) 100vw, 33vw" />
               </div>
             ) : (
               <div className="h-56 md:h-72 bg-surface/30" />
@@ -62,8 +63,8 @@ export default function ProductsFilter({ products }: { products: Product[] }) {
           {rest.map((p) => (
             <div key={p._id} className="bg-ink">
               {p.image ? (
-                <div className="h-32 bg-surface/50">
-                  <img src={urlFor(p.image).width(400).url()} alt={p.name} className="w-full h-full object-cover opacity-80" />
+                <div className="h-32 bg-surface/50 relative">
+                  <Image fill src={urlFor(p.image).width(400).url()} alt={p.name} className="object-cover opacity-80" sizes="(max-width:768px) 50vw, 33vw" />
                 </div>
               ) : (
                 <div className="h-32 bg-surface/20" />
