@@ -1,6 +1,7 @@
 import { getLocations } from "@/lib/sanity/queries";
 import NearestLocation from "@/components/locations/NearestLocation";
 import LocationsGrid from "@/components/locations/LocationsGrid";
+import AllLocationsMap from "@/components/locations/AllLocationsMap";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -24,6 +25,8 @@ export default async function LocationsPage() {
       <div className="mb-16">
         <NearestLocation locations={locations} />
       </div>
+
+      <AllLocationsMap locations={locations} />
 
       <LocationsGrid locations={locations} />
 
