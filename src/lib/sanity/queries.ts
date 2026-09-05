@@ -4,7 +4,7 @@ import type { Location, Promotion, Product, JobPosting, Post, WeeklySpecial, Sit
 export async function getLocations(): Promise<Location[]> {
   return sanityClient.fetch(`
     *[_type == "location"] | order(name asc) {
-      _id, name, address, phone, slug, hours, amenities, photos, fuelPrices, lat, lng
+      _id, _updatedAt, name, address, phone, slug, hours, amenities, photos, fuelPrices, lat, lng
     }
   `);
 }
@@ -52,7 +52,7 @@ export async function getWeeklySpecials(): Promise<WeeklySpecial[]> {
 export async function getLocation(slug: string): Promise<Location | null> {
   const loc: Location | null = await sanityClient.fetch(
     `*[_type == "location" && slug.current == $slug][0] {
-      _id, name, address, phone, slug, hours, amenities, photos, fuelPrices, lat, lng
+      _id, _updatedAt, name, address, phone, slug, hours, amenities, photos, fuelPrices, lat, lng
     }`,
     { slug }
   );

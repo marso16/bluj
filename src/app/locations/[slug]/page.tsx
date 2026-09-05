@@ -107,6 +107,11 @@ export default async function LocationPage({ params }: { params: Promise<{ slug:
                   </div>
                 ))}
               </div>
+              {loc._updatedAt && (
+                <p className="text-ghost/50 text-[10px] mt-2">
+                  Updated {new Date(loc._updatedAt).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}
+                </p>
+              )}
             </div>
           )}
 

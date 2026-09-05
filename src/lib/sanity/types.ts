@@ -12,6 +12,7 @@ export interface FuelPrice {
 
 export interface Location {
   _id: string;
+  _updatedAt?: string;
   name: string;
   address: string;
   phone?: string;
