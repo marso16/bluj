@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
 
 const NAV = [
   { label: "Home", href: "/" },
@@ -15,8 +16,12 @@ const NAV = [
 ];
 
 export default function Header() {
+  const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+
+  const isActive = (href: string) =>
+    href === "/" ? pathname === "/" : pathname.startsWith(href);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 60);
@@ -53,7 +58,11 @@ export default function Header() {
               <Link
                 key={item.href}
                 href={item.href}
-                className="text-ghost hover:text-clean text-[11px] uppercase tracking-[0.2em] font-medium transition-colors duration-200"
+                className={`text-[11px] uppercase tracking-[0.2em] font-medium transition-colors duration-200 ${
+                  isActive(item.href)
+                    ? "text-clean border-b border-glow pb-0.5"
+                    : "text-ghost hover:text-clean"
+                }`}
               >
                 {item.label}
               </Link>
@@ -94,7 +103,9 @@ export default function Header() {
             <Link
               key={item.href}
               href={item.href}
-              className="font-display text-ghost hover:text-clean uppercase tracking-[0.05em] transition-colors duration-150 leading-tight"
+              className={`font-display uppercase tracking-[0.05em] transition-colors duration-150 leading-tight ${
+                isActive(item.href) ? "text-glow" : "text-ghost hover:text-clean"
+              }`}
               style={{ fontSize: "clamp(2rem, 10vw, 3.75rem)" }}
               onClick={() => setMenuOpen(false)}
             >
